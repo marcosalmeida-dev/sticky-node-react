@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: strong_password_here
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build:
+      context: ./src/backend
+      dockerfile: Dockerfile
+    container_name: sticky-backend
+    environment:
+      MONGO_URI: mongodb://root:example@mongodb:27017/stickydb?authSource=admin
+      JWT_SECRET: your_jwt_secret
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+
+  frontend:
+    build:
+      context: ./src/frontend
+      dockerfile: Dockerfile
+    container_name: sticky-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  tests:
+    build:
+      context: .
+      dockerfile: ./src/backend/Dockerfile
+    container_name: sticky-tests
+    environment:
+      - MONGO_URI=mongodb://root:example@mongodb:27017
+      - JWT_SECRET=your_jwt_secret_here
+    depends_on:
+      - mongodb
+    command: npm test
+    volumes:
+      - .:/app  
+      - /app/node_modules  
+
+volumes:
+  mongo-data:

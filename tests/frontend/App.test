@@ -1,0 +1,96 @@
+// import React from 'react';
+// import { render, screen, fireEvent } from '@testing-library/react';
+// import App from './App';
+
+// describe('App component', () => {
+  
+//   it('should render the Navbar and Home page by default', () => {
+//     render(<App />);
+
+//     // Check if the Navbar is rendered
+//     expect(screen.getByText(/Sticky Note App/i)).toBeInTheDocument();
+
+//     // Check if the welcome message is rendered
+//     expect(screen.getByText(/Welcome to the Sticky Note App/i)).toBeInTheDocument();
+    
+//     // Check if the Sticky Notes header is rendered
+//     expect(screen.getByText(/Sticky Notes/i)).toBeInTheDocument();
+//   });
+
+//   it('should navigate to the Login page', () => {
+//     render(<App />);
+
+//     // Simulate navigation to the login route
+//     fireEvent.click(screen.getByText(/Login/i));
+
+//     // Check if the login form is rendered
+//     expect(screen.getByText(/Login/i)).toBeInTheDocument();
+//     expect(screen.getByLabelText(/Email Address/i)).toBeInTheDocument();
+//     expect(screen.getByLabelText(/Password/i)).toBeInTheDocument();
+//   });
+
+//   it('should navigate to the Register page', () => {
+//     render(<App />);
+
+//     // Simulate navigation to the register route
+//     fireEvent.click(screen.getByText(/Register/i));
+
+//     // Check if the register form is rendered
+//     expect(screen.getByText(/Register/i)).toBeInTheDocument();
+//     expect(screen.getByLabelText(/Name/i)).toBeInTheDocument();
+//     expect(screen.getByLabelText(/Email Address/i)).toBeInTheDocument();
+//     expect(screen.getByLabelText(/Password/i)).toBeInTheDocument();
+//   });
+
+//   it('should show 404 page for unknown routes', () => {
+//     render(<App />);
+
+//     // Simulate navigation to an unknown route
+//     fireEvent.click(screen.getByText(/404/i));
+
+//     // Check if the 404 message is rendered
+//     expect(screen.getByText(/404 - Not Found/i)).toBeInTheDocument();
+//   });
+
+//   it('should allow creating a new Sticky Note', () => {
+//     render(<App />);
+
+//     // Fill out and submit the new sticky note form
+//     fireEvent.change(screen.getByLabelText(/Title/i), { target: { value: 'New Sticky' } });
+//     fireEvent.change(screen.getByLabelText(/Description/i), { target: { value: 'This is a new sticky note' } });
+//     fireEvent.click(screen.getByText(/Create Note/i));
+
+//     // Check if the new sticky note appears in the list
+//     expect(screen.getByText(/New Sticky/i)).toBeInTheDocument();
+//     expect(screen.getByText(/This is a new sticky note/i)).toBeInTheDocument();
+//   });
+
+//   it('should allow editing an existing Sticky Note', () => {
+//     render(<App />);
+
+//     // Enter edit mode for the first sticky note
+//     fireEvent.click(screen.getAllByTestId('EditIcon')[0]);
+
+//     // Change the title and description
+//     fireEvent.change(screen.getByLabelText(/Title/i), { target: { value: 'Updated Sticky' } });
+//     fireEvent.change(screen.getByLabelText(/Description/i), { target: { value: 'Updated description' } });
+    
+//     // Save the changes
+//     fireEvent.click(screen.getAllByTestId('SaveIcon')[0]);
+
+//     // Check if the sticky note was updated
+//     expect(screen.getByText(/Updated Sticky/i)).toBeInTheDocument();
+//     expect(screen.getByText(/Updated description/i)).toBeInTheDocument();
+//   });
+
+//   it('should allow deleting a Sticky Note', () => {
+//     render(<App />);
+
+//     // Delete the first sticky note
+//     fireEvent.click(screen.getAllByTestId('DeleteIcon')[0]);
+
+//     // Check if the sticky note was removed
+//     expect(screen.queryByText(/test title2/i)).not.toBeInTheDocument();
+//   });
+// });
+
