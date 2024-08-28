@@ -39,6 +39,9 @@ This project is a full-stack application that provides user authentication and s
 - **Material-UI:** Styled components using Material-UI.
 
 ## Running the Application
+0. Pre-req: You need to create .env file in project root or in backend if you will run locally. In the project there is .env-example to help with.
+
 1. Build and start the Docker containers:
    ```bash
    docker-compose up --build
+
