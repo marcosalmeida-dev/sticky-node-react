@@ -39,13 +39,9 @@ const Register = () => {
 
         try {
             const response = await registerUser(name, email, password);
-            if (response?.data) {
-                // Store the token and email in localStorage
-                localStorage.setItem("jwtToken", response.data);
-                localStorage.setItem("loggedInUser", email);
-
-                // Redirect to home and refresh page to update the Navbar
-                window.location.href = "/";
+            if (response) {
+                console.log("Register successful:", response);
+                navigate("/"); // Redirect to home page after successful login
             }
         } catch (error: any) {
             console.error("Registration failed:", error);

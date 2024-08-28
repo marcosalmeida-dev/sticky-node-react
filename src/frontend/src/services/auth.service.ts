@@ -12,7 +12,15 @@ export const registerUser = async (username: string, email: string, password: st
       email,
       password,
     });
-    return response;
+
+    const token = response.data.token;
+    if (token) {
+      storeUserData(token, email);
+      return true;
+    }
+
+    console.error("Registration error:", response);
+    return false;
   } catch (error) {
     console.error("Registration error:", error);
     throw error;
@@ -29,14 +37,22 @@ export const loginUser = async (email: string, password: string) => {
 
     const token = response.data.token;
     if (token) {
-      localStorage.setItem(tokenKey, token);
-      localStorage.setItem(userKey, email); // Store the email
+      storeUserData(token, email);
+      return true;
     }
-    return token;
+
+    console.error("Login error:", response);
+    return false;
   } catch (error) {
     console.error("Login error:", error);
     throw error;
   }
+};
+
+// Store user data after register or login success
+const storeUserData = (token: string, email: string) => {
+  localStorage.setItem(tokenKey, token);
+  localStorage.setItem(userKey, email);
 };
 
 // Get the current token from localStorage

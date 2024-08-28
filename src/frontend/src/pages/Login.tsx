@@ -36,9 +36,9 @@ const Login = () => {
         }
 
         try {
-            const token = await loginUser(email, password);
-            if (token) {
-                console.log("Login successful:", token);
+            const response = await loginUser(email, password);
+            if (response) {
+                console.log("Login successful:", response);
                 navigate("/"); // Redirect to home page after successful login
             }
         } catch (error: any) {

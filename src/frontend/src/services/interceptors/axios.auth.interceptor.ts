@@ -13,7 +13,6 @@ axiosInterceptorInstance.interceptors.request.use(
     // Retrieve the JWT token from localStorage or any other secure storage
     const token = localStorage.getItem("jwtToken");
     if (token) {
-      console.log("Existing token: " + token);
       config.headers["Authorization"] = `Bearer ${token}`;
     } else {
       // Redirect to login page if token is not found
