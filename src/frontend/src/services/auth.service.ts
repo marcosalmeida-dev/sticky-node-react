@@ -1,14 +1,13 @@
 import axios from "axios";
 
-const PORT = process.env.PORT || 5000;
-const baseURL = `http://localhost:${PORT}/api`;
+const API_PORT = process.env.API_PORT || 5000;
+const baseURL = `http://localhost:${API_PORT}/api`;
 
 const tokenKey = "jwtToken"; // Key used to store the JWT in localStorage
 const userKey = "loggedInUser"; // Key used to store the logged-in user's name in localStorage
 
 // Register a new user
 export const registerUser = async (username: string, email: string, password: string) => {
-  console.log(`Port env: ${PORT}`);
   try {
     const response = await axios.post(`${baseURL}/auth/register`, {
       username,

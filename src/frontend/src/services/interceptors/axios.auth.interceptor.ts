@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const PORT = process.env.PORT || 5000;
-const baseURL = `http://localhost:${PORT}/api`;
+const API_PORT = process.env.API_PORT || 5000;
+const baseURL = `http://localhost:${API_PORT}/api`;
 
 // Create an instance of Axios
 const axiosInterceptorInstance = axios.create({

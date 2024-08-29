@@ -10,7 +10,10 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
-      - mongo-data:/data/db
+      - /data/db
+    restart: always
+    networks:
+      - sticky-network
 
   backend:
     build:
@@ -24,6 +27,9 @@ services:
       - "5000:5000"
     depends_on:
       - mongodb
+    restart: always
+    networks:
+      - sticky-network
 
   frontend:
     build:
@@ -34,6 +40,9 @@ services:
       - "3001:3000"
     depends_on:
       - backend
+    restart: always
+    networks:
+      - sticky-network
 
   ## Enable to run tests
   # tests:
@@ -51,5 +60,9 @@ services:
   #     - .:/app  
   #     - /app/node_modules  
 
-volumes:
-  mongo-data:
+networks:
+  sticky-network:
+    driver: bridge
+
+# volumes:
+#   mongo-data:

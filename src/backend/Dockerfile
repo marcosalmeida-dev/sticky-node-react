@@ -1,20 +1,13 @@
-# Use an official Node.js runtime as a parent image
-FROM node:18
+FROM node:21.6.2-slim
 
-# Set the working directory
 WORKDIR /app
 
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
+RUN npm ci
 
-# Copy the rest of the application code
 COPY . .
-
-# Expose the backend port
-EXPOSE 5000
 
 # Command to run the backend
 CMD ["npm", "start"]
