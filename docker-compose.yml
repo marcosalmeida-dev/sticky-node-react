@@ -31,24 +31,25 @@ services:
       dockerfile: Dockerfile
     container_name: sticky-frontend
     ports:
-      - "3000:3000"
+      - "3001:3000"
     depends_on:
       - backend
 
-  tests:
-    build:
-      context: .
-      dockerfile: ./src/backend/Dockerfile
-    container_name: sticky-tests
-    environment:
-      - MONGO_URI=mongodb://root:example@mongodb:27017/mural?authSource=admin
-      - JWT_SECRET=your_jwt_secret_here
-    depends_on:
-      - mongodb
-    command: npm test
-    volumes:
-      - .:/app  
-      - /app/node_modules  
+  ## Enable to run tests
+  # tests:
+  #   build:
+  #     context: .
+  #     dockerfile: ./src/backend/Dockerfile
+  #   container_name: sticky-tests
+  #   environment:
+  #     - MONGO_URI=mongodb://root:example@mongodb:27017/mural?authSource=admin
+  #     - JWT_SECRET=your_jwt_secret_here
+  #   depends_on:
+  #     - mongodb
+  #   command: npm test
+  #   volumes:
+  #     - .:/app  
+  #     - /app/node_modules  
 
 volumes:
   mongo-data:

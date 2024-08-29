@@ -3,9 +3,9 @@ import swaggerUi from "swagger-ui-express";
 import swaggerOutput from "./swagger-output.json";
 import cors from "cors";
 import dotenv from "dotenv";
-import connectDB from "./config/db";
-import authRoutes from "./routes/authRoutes";
-import stickyRoutes from "./routes/stickyRoutes";
+import connectDB from "./src/config/db";
+import authRoutes from "./src/routes/authRoutes";
+import stickyRoutes from "./src/routes/stickyRoutes";
 
 dotenv.config();
 

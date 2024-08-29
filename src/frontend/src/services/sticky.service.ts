@@ -1,7 +1,8 @@
 import axiosInterceptorInstance from './interceptors/axios.auth.interceptor';
 import { StickyNote, CreateStickyNoteDto, UpdateStickyNoteDto } from '../types/sticky';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const PORT = process.env.PORT || 5000;
+const API_BASE_URL = `http://localhost:${PORT}/api`;
 
 export const getAllStickyNotes = async (): Promise<StickyNote[]> => {
   const response = await axiosInterceptorInstance.get<StickyNote[]>(API_BASE_URL + "/sticky/list");
