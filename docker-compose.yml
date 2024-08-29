@@ -36,8 +36,14 @@ services:
       context: ./src/frontend
       dockerfile: Dockerfile
     container_name: sticky-frontend
+    environment:
+      - WDS_SOCKET_HOST=127.0.0.1 
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true 
     ports:
-      - "3001:3000"
+      - "3000:3000"
+    volumes:
+      - ./src/frontend:/app
     depends_on:
       - backend
     restart: always
@@ -63,6 +69,3 @@ services:
 networks:
   sticky-network:
     driver: bridge
-
-# volumes:
-#   mongo-data:

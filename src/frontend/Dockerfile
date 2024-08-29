@@ -1,3 +1,4 @@
+# Use the official Node.js image.
 FROM node:21.6.2-slim
 
 WORKDIR /app
@@ -5,18 +6,14 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
+# Install dependencies
 RUN npm ci
 
+# Copy the source code into the container
 COPY . .
 
-# Build the React app
-RUN npm run build
-
-# Install serve to serve the production build
-RUN npm install -g serve
-
 # Expose the frontend port
-EXPOSE 3001
+EXPOSE 3000
 
-# Command to run the frontend
-CMD ["serve", "-s", "build"]
+# Command to run the frontend in development mode
+CMD ["npm", "start"]

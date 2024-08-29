@@ -9,5 +9,5 @@ RUN npm ci
 
 COPY . .
 
-# Command to run the backend
-CMD ["npm", "start"]
+# Use ts-node with nodemon for hot-reload during development
+CMD ["npm", "run", "dev"]

@@ -6,9 +6,9 @@
     "clean": "rimraf dist",
     "build:swagger": "ts-node swagger.ts",
     "build:ts": "npx tsc",
-    "build": "npm run clean && npm run build:swagger && npm run build:ts",
+    "build": "npm run clean && npm run build:swagger",
     "start": "npm run build && node dist/index.js",
-    "dev": "npm run build && ts-node src/backend/index.ts",
+    "dev": "npm run build && nodemon --watch src --ext ts,tsx --exec ts-node index.ts", 
     "test": "jest"
   },
   "dependencies": {
@@ -33,6 +33,7 @@
     "@types/cors": "^2.8.17",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/swagger-ui-express": "^4.1.6",
+    "nodemon": "^3.1.4",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"

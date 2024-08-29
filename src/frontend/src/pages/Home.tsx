@@ -17,7 +17,7 @@ const Home = () => {
                     }}
                 >
                     <Typography variant="h3" gutterBottom>
-                        Welcome to the Sticky Note App
+                        Welcome to the Sticky Note App 123
                     </Typography>
                 </Box>
                 <Sticky />
